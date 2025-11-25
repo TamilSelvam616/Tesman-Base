@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tags & Attributes - Tesman Base</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: #f8f1e9;
+            /* Cream background */
+            color: #1a2e44;
+            /* Navy text */
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1a2e44;
+            /* Navy background */
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            color: #d4a373;
+            /* Gold text */
+            font-weight: 800;
+            /* Bolder font */
+            margin-bottom: 1rem;
+        }
+
+        .con {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .con a {
+            color: #1a2e44;
+            /* Navy text */
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            /* Bolder font */
+            padding: 7px 14px;
+            background-color: #d4a373;
+            /* Gold background */
+            border-radius: 10px;
+            border: 2px groove #e6b98a;
+            /* Light gold border */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .con a:hover {
+            background-color: #e6b98a;
+            /* Lighter gold on hover */
+            color: #1a2e44;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            /* Matches previous .para max-width */
+            margin: 7rem auto 2rem;
+            /* Adjusted for no hero section */
+            padding: 2rem;
+            background: #ffffff;
+            /* White content area */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h1 {
+            font-size: 2.375rem;
+            /* Approx. 38px */
+            color: #1a2e44;
+            /* Navy */
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .content h3 {
+            font-size: 1.625rem;
+            /* Approx. 26px */
+            color: #1a2e44;
+            /* Navy */
+            font-weight: 700;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .content p {
+            font-size: 1.125rem;
+            /* Approx. 18px */
+            font-weight: 500;
+            /* Bolder for readability */
+            margin-bottom: 1.25rem;
+            text-align: justify;
+            line-height: 1.7;
+            color: #1a2e44;
+            /* Navy */
+        }
+
+        .content ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .content ul li {
+            font-size: 1rem;
+            /* Approx. 16px */
+            font-weight: 500;
+            /* Bolder for readability */
+            margin-bottom: 0.625rem;
+            line-height: 1.6;
+            color: #1a2e44;
+            /* Navy */
+        }
+
+        .content pre {
+            background-color: #1a2e44;
+            /* Navy */
+            color: #f8f1e9;
+            /* Cream */
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 0.875rem;
+            /* Approx. 14px */
+            font-weight: 500;
+            /* Bolder for readability */
+            overflow-x: auto;
+            margin-bottom: 1.25rem;
+            border: 1px solid #d4a373;
+            /* Gold border */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .content hr {
+            border: 0;
+            border-top: 1px solid #d4a373;
+            /* Gold */
+            margin: 1.25rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar h1 {
+                font-size: 1.5rem;
+            }
+
+            .con a {
+                font-size: 1rem;
+                padding: 5px 10px;
+            }
+
+            .content {
+                margin: 6rem auto 1rem;
+                /* Adjusted for smaller screens */
+            }
+
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <h1>TESMAN BASE</h1>
+            <div class="con">
+                <a href="index.html">Home</a>
+                <a href="index1.html">Tags & Attributes</a>
+                <a href="index6.html">Videos</a>
+                <a href="index3.html">In Tamil</a>
+                <a href="https://copilot.microsoft.com/chats/96LMkoy45P16NhdhdWh44">Copilot</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="content" id="tags-attributes">
+        <div class="para">
+            <h1>HTML Tags & Attributes</h1>
+            <h3>1. Document Foundation</h3>
+            <ul>
+                <li><b>&lt;!DOCTYPE html&gt;</b>: This tells the browser that your HTML file is an HTML5 document, like
+                    a signboard. It must be the first line of the file. It’s not case-sensitive, so you can use capital
+                    or small letters. It ensures the browser works correctly.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;!DOCTYPE html&gt;</pre>
+                </li>
+                <li><b>&lt;html&gt;</b>: This is like a big box that holds all HTML content. Everything goes inside it.
+                    Attributes like <b>lang="en"</b> set the language (helps with accessibility) and <b>dir="rtl"</b>
+                    makes text right-to-left, like for Arabic.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;html lang="en"&gt;&lt;/html&gt;</pre>
+                </li>
+            </ul>
+            <hr>
+
+            <h3>2. Metadata Masters</h3>
+            <ul>
+                <li><b>&lt;head&gt;</b>: This gives instructions to the browser and search engines but isn’t visible on
+                    the page. It contains the title, meta tags, CSS links, etc.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;head&gt;&lt;title&gt;My Page&lt;/title&gt;&lt;/head&gt;</pre>
+                </li>
+                <li><b>&lt;title&gt;</b>: Shows the page’s name in the browser tab and Google search. It should be short
+                    and clear.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;title&gt;Tesman Learning&lt;/title&gt;</pre>
+                </li>
+                <li><b>&lt;meta&gt;</b>: Provides extra details. <b>charset="UTF-8"</b> supports all language
+                    characters. <b>name="viewport"</b> makes the page fit properly on mobile. <b>name="description"</b>
+                    appears as a snippet in Google search.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width"&gt;
+&lt;meta name="description" content="Learn coding"&gt;</pre>
+                </li>
+                <li><b>&lt;link&gt;</b>: Connects external files to the page, like a CSS file for styling or a favicon
+                    for the browser tab icon.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;link rel="icon" href="favicon.ico"&gt;</pre>
+                </li>
+            </ul>
+            <hr>
+
+            <h3>3. Content Organizers</h3>
+            <ul>
+                <li><b>&lt;header&gt;</b>: The top part of the page, like a logo or menu. <b>&lt;footer&gt;</b>: The
+                    bottom part, like contact or copyright info.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;header&gt;&lt;h1&gt;Tesman&lt;/h1&gt;&lt;/header&gt;
+&lt;footer&gt;&lt;p&gt;Contact Us&lt;/p&gt;&lt;/footer&gt;</pre>
+                </li>
+                <li><b>&lt;nav&gt;</b>: Holds navigation links, like a menu bar. Screen readers prioritize it.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;nav&gt;&lt;a href="home.html"&gt;Home&lt;/a&gt;&lt;/nav&gt;</pre>
+                </li>
+                <li><b>&lt;main&gt;</b>: The main content of the page; only one per page.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;main&gt;&lt;article&gt;Content&lt;/article&gt;&lt;/main&gt;</pre>
+                </li>
+                <li><b>&lt;article&gt;</b>: Independent content, like a blog post or news article, that can stand
+                    alone.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;article&gt;&lt;h2&gt;Blog Post&lt;/h2&gt;&lt;/article&gt;</pre>
+                </li>
+                <li><b>&lt;section&gt;</b>: Groups related content, like a book chapter with a heading.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;section&gt;&lt;h3&gt;Chapter 1&lt;/h3&gt;&lt;/section&gt;</pre>
+                </li>
+                <li><b>&lt;div&gt;</b>: A general box for grouping content, often used for styling.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;div&gt;&lt;p&gt;Text&lt;/p&gt;&lt;/div&gt;</pre>
+                </li>
+                <li><b>&lt;span&gt;</b>: Used to style small inline text, like highlighting a single word.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;span&gt;Highlighted&lt;/span&gt;</pre>
+                </li>
+            </ul>
+            <hr>
+
+            <h3>4. Text Hierarchy</h3>
+            <ul>
+                <li><b>&lt;h1&gt;-&lt;h6&gt;</b>: Headings, from &lt;h1&gt; (biggest) to &lt;h6&gt; (smallest). One
+                    &lt;h1&gt; per page is good for SEO. Screen readers use them for navigation.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;h1&gt;Main Title&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;</pre>
+                </li>
+                <li><b>&lt;p&gt;</b>: Paragraphs for text blocks, automatically adds space above and below.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;p&gt;This is a paragraph.&lt;/p&gt;</pre>
+                </li>
+                <li><b>&lt;strong&gt;</b>: Makes important text bold.<br> <b>&lt;em&gt;</b>: Makes emphasized text
+                    italic.<br> <b>&lt;mark&gt;</b>: Highlights text (usually yellow).<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;strong&gt;Important&lt;/strong&gt;
+&lt;em&gt;Emphasized&lt;/em&gt;
+&lt;mark&gt;Highlighted&lt;/mark&gt;</pre>
+                </li>
+            </ul>
+            <hr>
+
+            <h3>5. Media Elements</h3>
+            <ul>
+                <li><b>&lt;img&gt;</b>: Displays images on the page. <b>src</b> specifies the image path, <b>alt</b>
+                    provides an accessibility description, <b>loading="lazy"</b> speeds up page load.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;img src="photo.jpg" alt="Scenery" loading="lazy"&gt;</pre>
+                </li>
+                <li><b>&lt;video&gt;</b> and <b>&lt;audio&gt;</b>: Plays video or audio. <b>controls</b> adds play/pause
+                    buttons, <b>autoplay</b> plays automatically (browsers may block), <b>loop</b> repeats the
+                    media.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;video src="vid.mp4" controls loop&gt;&lt;/video&gt;
+&lt;audio src="song.mp3" controls&gt;&lt;/audio&gt;</pre>
+                </li>
+            </ul>
+            <hr>
+
+            <h3>6. Navigation & Links</h3>
+            <ul>
+                <li><b>&lt;a&gt;</b>: Creates links. <b>href</b> points to a URL or section, <b>target="_blank"</b>
+                    opens in a new tab (use <b>rel="noopener"</b> for security), <b>download</b> triggers a file
+                    download.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;a href="https://tesman.com" target="_blank" rel="noopener"&gt;Visit&lt;/a&gt;
+&lt;a href="file.pdf" download&gt;Download&lt;/a&gt;</pre>
+                </li>
+            </ul>
+            <hr>
+
+            <h3>7. Data Organization</h3> &nbsp; 
+            <ul>
+                <li><b>&lt;table&gt;</b>: Creates a table. <b>&lt;tr&gt;</b>: Row. <b>&lt;th&gt;</b>: Header cell
+                    (<b>scope="col/row"</b> for accessibility). <b>&lt;td&gt;</b>: Data cell (<b>colspan/rowspan</b>
+                    merges cells).<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;table&gt;
+  &lt;tr&gt;&lt;th scope="col"&gt;Name&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;John&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+                </li>
+                <li><b>&lt;ul&gt;</b> and <b>&lt;ol&gt;</b>: Bullet list (unordered) or numbered list (ordered).
+                    <b>&lt;ol&gt;</b> attributes: <b>reversed</b>, <b>start</b>. <b>&lt;li&gt;</b>: List item.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;/ul&gt;
+&lt;ol start="2"&gt;&lt;li&gt;Step&lt;/li&gt;&lt;/ol&gt;</pre>
+                </li>
+            </ul>
+            <hr>
+
+            <h3>8. User Input (Forms)</h3>
+            <ul>
+                <li><b>&lt;form&gt;</b>: Collects user input, like login or survey forms. <b>action</b> specifies where
+                    data is sent, <b>method="GET/POST"</b> defines how data is sent, <b>autocomplete</b> controls form
+                    auto-fill.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;form action="/submit" method="POST"&gt;
+  &lt;input type="text"&gt;
+&lt;/form&gt;</pre>
+                </li>
+                <li><b>&lt;input&gt;</b>: Creates input fields. Types: <b>text</b>, <b>email</b>, <b>password</b>,
+                    <b>checkbox</b>, <b>radio</b>, <b>file</b> (<b>accept=".pdf"</b> restricts file types), <b>date</b>,
+                    <b>color</b>, <b>range</b>.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;input type="email" required&gt;
+&lt;input type="file" accept=".pdf"&gt;</pre>
+                </li>
+                <li><b>Special Attributes</b>: <b>required</b> makes a field mandatory, <b>pattern="[A-Za-z]"</b>
+                    validates input, <b>placeholder</b> shows hint text.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;input type="text" placeholder="Enter name" required&gt;</pre>
+                </li>
+            </ul><a href="index4.html" style=" display:flex;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700; 
+            padding: 7px 14px;
+            background-color: #d4a373; 
+            border-radius: 10px;
+            border: 2px groove #e6b98a; 
+            margin-bottom: 10px;">Detailed Version of Tables and Forms</a>
+            <hr>
+
+            <h3>9. Interactive Elements</h3>
+            <ul>
+                <li><b>&lt;details&gt;</b> and <b>&lt;summary&gt;</b>: Creates a clickable content box that expands,
+                    works without JavaScript.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;details&gt;
+  &lt;summary&gt;Click me&lt;/summary&gt;
+  &lt;p&gt;Hidden content&lt;/p&gt;
+&lt;/details&gt;</pre>
+                </li>
+                <li><b>&lt;dialog&gt;</b>: Creates a popup or modal window. Use the <b>open</b> attribute or JavaScript
+                    (.showModal()) to display.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;dialog open&gt;Popup content&lt;/dialog&gt;</pre>
+                </li>
+            </ul>
+            <hr>
+
+            <h3>10. Global Attributes</h3>
+            <ul>
+                <li><b>Identification</b>: <b>id</b> is a unique identifier, one per page. <b>class</b> creates reusable
+                    style groups.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;div id="unique" class="style"&gt;Content&lt;/div&gt;</pre>
+                </li>
+                <li><b>Accessibility</b>: <b>aria-label</b> provides descriptions for screen readers, <b>tabindex</b>
+                    controls keyboard navigation.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;button aria-label="Close" tabindex="0"&gt;X&lt;/button&gt;</pre>
+                </li>
+                <li><b>Custom Data</b>: <b>data-*</b> stores custom info for JavaScript, like <b>data-user-id</b>.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;div data-user-id="123"&gt;User&lt;/div&gt;</pre>
+                </li>
+            </ul>
+            <hr>
+
+            <h3>Key Concepts to Remember</h3>
+            <ul>
+                <li><b>Semantics Over Style</b>: Choose tags based on their meaning, not appearance.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;header&gt;&lt;h1&gt;Title&lt;/h1&gt;&lt;/header&gt;</pre>
+                </li>
+                <li><b>Attribute Order</b>: Order doesn’t technically matter, but alphabetical order is common.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;img alt="Photo" src="image.jpg"&gt;</pre>
+                </li>
+                <li><b>Progressive Enhancement</b>: Ensure the page works without CSS or JavaScript.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;form action="/submit"&gt;&lt;input type="text"&gt;&lt;/form&gt;</pre>
+                </li>
+                <li><b>Accessibility</b>: Screen readers rely on correct tags and attributes.<br>
+                    <b>Example</b>:<br>
+                    <pre>&lt;button aria-label="Submit"&gt;Send&lt;/button&gt;</pre>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('.con a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const sectionId = href;
+                    document.querySelector(sectionId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables and Forms - Tesman Base</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: #f8f1e9; /* Cream background */
+            color: #1a2e44; /* Navy text */
+            line-height: 1.6;
+            font-weight: 600; /* Bolder font for body */
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1a2e44; /* Navy background */
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            color: #d4a373; /* Gold text */
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .con {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .con a {
+            color: #1a2e44; /* Navy text */
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700; /* Bolder font */
+            padding: 7px 14px;
+            background-color: #d4a373; /* Gold background */
+            border-radius: 10px;
+            border: 2px groove #e6b98a; /* Light gold border */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .con a:hover {
+            background-color: #e6b98a; /* Lighter gold on hover */
+            color: #1a2e44;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 7rem auto 2rem;
+            padding: 2rem;
+            background: #ffffff; /* White content area */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h1 {
+            font-size: 2.375rem;
+            color: #1a2e44; /* Navy */
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .content h3 {
+            font-size: 1.625rem;
+            color: #1a2e44; /* Navy */
+            font-weight: 700;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .content p {
+            font-size: 1.125rem;
+            font-weight: 600; /* Bolder font */
+            margin-bottom: 1.25rem;
+            text-align: justify;
+            line-height: 1.7;
+            color: #1a2e44; /* Navy */
+        }
+
+        .content pre {
+            background-color: #1a2e44; /* Navy */
+            color: #f8f1e9; /* Cream */
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 0.875rem;
+            font-weight: 600; /* Bolder font */
+            overflow-x: auto;
+            margin-bottom: 1.25rem;
+            border: 1px solid #d4a373; /* Gold border */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .content hr {
+            border: 0;
+            border-top: 1px solid #d4a373; /* Gold */
+            margin: 1.25rem 0;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            background-color: #f8f1e9; /* Cream */
+            border: 2px solid #d4a373; /* Gold border */
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #d4a373; /* Gold border */
+            font-size: 1rem;
+            color: #1a2e44; /* Navy */
+            font-weight: 600; /* Bolder font */
+        }
+
+        th {
+            background-color: #1a2e44; /* Navy */
+            color: #d4a373; /* Gold text */
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #e6b98a; /* Light gold */
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-size: 1.125rem;
+            font-weight: 600; /* Bolder font */
+            color: #1a2e44; /* Navy */
+        }
+
+        input, select, textarea {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 2px solid #d4a373; /* Gold border */
+            border-radius: 5px;
+            background-color: #f8f1e9; /* Cream */
+            color: #1a2e44; /* Navy */
+            font-weight: 600; /* Bolder font */
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #e6b98a; /* Light gold */
+            box-shadow: 0 0 5px rgba(212, 163, 115, 0.5);
+        }
+
+        button {
+            padding: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 700; /* Bolder font */
+            background-color: #d4a373; /* Gold */
+            color: #1a2e44; /* Navy */
+            border: 2px groove #e6b98a; /* Light gold border */
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e6b98a; /* Light gold */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar h1 {
+                font-size: 1.5rem;
+            }
+
+            .con a {
+                font-size: 1rem;
+                padding: 5px 10px;
+            }
+
+            .content {
+                margin: 6rem auto 1rem;
+            }
+
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1>TESMAN BASE</h1>
+            <div class="con">
+                <a href="index.html">Home</a>
+                <a href="index1.html">Tags & Attributes</a>
+                <a href="index6.html">Videos</a>
+                <a href="index3.html">In Tamil</a>
+                <a href="https://copilot.microsoft.com/chats/96LMkoy45P16NhdhdWh44">Copilot</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="content">
+        <h1>HTML Tables and Forms</h1>
+
+        <!-- Tables Section -->
+        <h3>1. HTML Tables</h3>
+        <p>Tables organize data in rows and columns, ideal for schedules, product lists, or comparison charts. Key tags include <code>&lt;table&gt;</code> for the table container, <code>&lt;tr&gt;</code> for rows, <code>&lt;th&gt;</code> for headers (with <code>scope</code> for accessibility), and <code>&lt;td&gt;</code> for data cells. Attributes like <code>colspan</code> and <code>rowspan</code> merge cells across columns or rows.</p>
+        <pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Course&lt;/th&gt;
+            &lt;th scope="col"&gt;Instructor&lt;/th&gt;
+            &lt;th scope="col"&gt;Duration&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2"&gt;HTML &amp; CSS&lt;/td&gt;
+            &lt;td&gt;4 weeks&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;JavaScript&lt;/td&gt;
+            &lt;td&gt;Jane Doe&lt;/td&gt;
+            &lt;td&gt;6 weeks&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+        </pre>
+        <h3>Output: Table</h3>
+        <p>The table below displays a course schedule with a merged cell for the "HTML & CSS" course, spanning two columns (Course and Instructor).</p>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Course</th>
+                    <th scope="col">Instructor</th>
+                    <th scope="col">Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">HTML & CSS</td>
+                    <td>4 weeks</td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>Jane Doe</td>
+                    <td>6 weeks</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><b>Visual Description</b>: The table has a cream background with gold borders. Headers are navy with gold text, and even rows have a light gold background for contrast. The "HTML & CSS" cell spans two columns, creating a wider cell that aligns with the single "4 weeks" cell in the Duration column. Text is bold and clear, using Playfair Display font.</p>
+        <hr>
+
+        <!-- Forms Section -->
+        <h3>2. HTML Forms</h3>
+        <p>Forms collect user input for tasks like registration or feedback. The <code>&lt;form&gt;</code> tag defines the form, with attributes like <code>action</code> (where data is sent) and <code>method</code> (GET or POST). Input elements like <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;textarea&gt;</code> handle different data types, with attributes like <code>required</code> and <code>pattern</code> for validation.</p>
+        <pre>
+&lt;form action="/submit" method="POST"&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" placeholder="Enter your name" required&gt;
+    &lt;label for="course"&gt;Course:&lt;/label&gt;
+    &lt;select id="course" name="course"&gt;
+        &lt;option value=""&gt;Select a course&lt;/option&gt;
+        &lt;option value="html"&gt;HTML &amp; CSS&lt;/option&gt;
+        &lt;option value="js"&gt;JavaScript&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;label for="feedback"&gt;Feedback:&lt;/label&gt;
+    &lt;textarea id="feedback" name="feedback" rows="4" placeholder="Your feedback"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+        </pre>
+        <h3>Output: Form</h3>
+        <p>The form below allows users to enter their name, select a course, and provide feedback.</p>
+        <form action="/submit" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            <label for="course">Course:</label>
+            <select id="course" name="course">
+                <option value="">Select a course</option>
+                <option value="html">HTML & CSS</option>
+                <option value="js">JavaScript</option>
+            </select>
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" placeholder="Your feedback"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <p><b>Visual Description</b>: The form is vertically stacked with bold navy labels and cream-colored input fields with gold borders. The text input, dropdown, and textarea have a consistent bold font. The submit button is gold with navy text, turning lighter gold on hover. Focus states show a light gold border and subtle glow. The layout is clean and responsive, fitting mobile screens.</p>
+        <hr>
+
+        <!-- Table + Form Section -->
+        <h3>3. Combining Tables and Forms</h3>
+        <p>Combining tables and forms creates interactive data displays, like editable tables for managing records. Each table row can contain a form with inputs for updating data, often used in dashboards or admin panels.</p>
+        <pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Student&lt;/th&gt;
+            &lt;th scope="col"&gt;Course&lt;/th&gt;
+            &lt;th scope="col"&gt;Grade&lt;/th&gt;
+            &lt;th scope="col"&gt;Actions&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;John Doe&lt;/td&gt;
+            &lt;td&gt;HTML &amp; CSS&lt;/td&gt;
+            &lt;td&gt;
+                &lt;form action="/update-grade" method="POST"&gt;
+                    &lt;input type="hidden" name="student" value="John Doe"&gt;
+                    &lt;input type="text" name="grade" value="A" pattern="[A-F]" required&gt;
+                    &lt;button type="submit"&gt;Update&lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;form action="/delete-student" method="POST"&gt;
+                    &lt;input type="hidden" name="student" value="John Doe"&gt;
+                    &lt;button type="submit"&gt;Delete&lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jane Smith&lt;/td&gt;
+            &lt;td&gt;JavaScript&lt;/td&gt;
+            &lt;td&gt;
+                &lt;form action="/update-grade" method="POST"&gt;
+                    &lt;input type="hidden" name="student" value="Jane Smith"&gt;
+                    &lt;input type="text" name="grade" value="B" pattern="[A-F]" required&gt;
+                    &lt;button type="submit"&gt;Update&lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;form action="/delete-student" method="POST"&gt;
+                    &lt;input type="hidden" name="student" value="Jane Smith"&gt;
+                    &lt;button type="submit"&gt;Delete&lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+        </pre>
+        <h3>Output: Table + Form</h3>
+        <p>The table below shows a student roster with forms in each row to update grades or delete students.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Student</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>HTML & CSS</td>
+                    <td>
+                        <form action="/update-grade" method="POST">
+                            <input type="hidden" name="student" value="John Doe">
+                            <input type="text" name="grade" value="A" pattern="[A-F]" required>
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/delete-student" method="POST">
+                            <input type="hidden" name="student" value="John Doe">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>JavaScript</td>
+                    <td>
+                        <form action="/update-grade" method="POST">
+                            <input type="hidden" name="student" value="Jane Smith">
+                            <input type="text" name="grade" value="B" pattern="[A-F]" required>
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/delete-student" method="POST">
+                            <input type="hidden" name="student" value="Jane Smith">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p><b>Visual Description</b>: The table has a cream background with gold borders, bold navy text, and navy headers with gold text. Even rows are light gold for readability. Each row contains two forms: one for updating grades (with a text input restricted to A-F grades) and one for deleting the student. Inputs and buttons are styled consistently with the form section, using bold fonts, gold borders, and hover effects. The layout is compact and responsive, with forms fitting neatly within table cells.</p>
+        <hr>
+    </section>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('.con a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

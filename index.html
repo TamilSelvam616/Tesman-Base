@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesman Base</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: #f8f1e9;
+            color: #1a2e44;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #1a2e44;
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            color: #d4a373;
+            font-weight: 800; /* Bolder font for heading */
+            margin-bottom: 1rem;
+        }
+
+        .con {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .con a {
+            color: #1a2e44;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700; /* Bolder font for links */
+            padding: 7px 14px;
+            background-color: #d4a373;
+            border-radius: 10px;
+            border: 2px groove #e6b98a;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .con a:hover {
+            background-color: #e6b98a;
+            color: #1a2e44;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(26, 46, 68, 0.7), rgba(26, 46, 68, 0.7)), url('https://source.unsplash.com/random/1920x1080/?education');
+            background-size: cover;
+            background-position: center;
+            color: #f8f1e9;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            font-weight: 500; /* Bolder for readability */
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #d4a373;
+            color: #1a2e44;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 700; /* Bolder for button */
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e6b98a;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background: #ffffff; /* White content area */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a2e44;
+            font-weight: 700;
+        }
+
+        .content h3 {
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem;
+            color: #1a2e44;
+            font-weight: 700;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            font-weight: 500; /* Bolder for readability */
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #1a2e44;
+        }
+
+        .content ul {
+            list-style: disc;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content ul li {
+            font-size: 1.1rem;
+            font-weight: 500; /* Bolder for readability */
+            margin-bottom: 0.5rem;
+            color: #1a2e44;
+        }
+
+        .content pre {
+            background-color: #1a2e44;
+            color: #f8f1e9;
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500; /* Bolder for readability */
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d4a373; /* Gold border */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .content hr {
+            border: 0;
+            border-top: 1px solid #d4a373;
+            margin: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .navbar h1 {
+                font-size: 1.5rem;
+            }
+
+            .con a {
+                font-size: 1rem;
+                padding: 5px 10px;
+            }
+
+            .content h2 {
+                font-size: 2rem;
+            }
+
+            .content h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1>TESMAN BASE</h1>
+            <div class="con">
+                <a href="#home">Home</a>
+                <a href="index1.html">Tags & Attributes</a>
+                <a href="index6.html">Videos</a>
+                <a href="index3.html">In Tamil</a>
+                <a href="https://copilot.microsoft.com/chats/96LMkoy45P16NhdhdWh44">Copilot</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to Tesman Learning</h1>
+            <p>Master new skills with our engaging and interactive courses!</p>
+        </div>
+    </section>
+
+    <section class="content" id="html-basics">
+        <div class="para">
+            <h2>Learn HTML Basics</h2>
+            <h3>What is HTML?</h3>
+            <p>HTML stands for <b>HyperText Markup Language</b>. It is the standard language used to create and structure content on the World Wide Web.</p>
+            <ul>
+                <li><b>HyperText</b>: Refers to text with links (hyperlinks) that connect to other web pages or parts of the same page, enabling non-linear navigation.</li>
+                <li><b>Markup</b>: HTML uses special instructions called tags to define the structure and presentation of content, like headings or paragraphs.</li>
+                <li><b>Language</b>: A standardized system that web browsers (e.g., Chrome, Firefox, Edge) understand to display web pages.</li>
+            </ul>
+            <hr>
+
+            <h3>Purpose of HTML</h3>
+            <p>HTML provides the foundation for web pages by organizing content such as text, images, links, and multimedia into a structure that browsers can render.</p>
+            <ul>
+                <li>It defines the skeleton of a website, specifying where content appears and how it’s organized.</li>
+                <li>It works alongside CSS (for styling) and JavaScript (for interactivity) to create modern websites.</li>
+            </ul>
+            <hr>
+
+            <h3>History of HTML</h3>
+            <p>HTML was created by Tim Berners-Lee in 1990 as part of the World Wide Web. It has evolved significantly over time:</p>
+            <ul>
+                <li>Early versions (HTML 1.0, 2.0) were simple, focusing on basic text and links.</li>
+                <li>HTML5, released in 2014, is the current standard, supporting multimedia (video, audio), animations, and interactive features.</li>
+            </ul>
+            <hr>
+
+            <h3>How HTML Works</h3>
+            <ul>
+                <li>HTML files are text files saved with a <code>.html</code> extension (e.g., <code>mywebsite.html</code>).</li>
+                <li>These files are written using plain text and opened in web browsers to display content.</li>
+                <li>HTML is not a programming language but a markup language, meaning it focuses on structure, not logic or calculations.</li>
+            </ul>
+            <hr>
+
+            <h3>Basic Structure of an HTML File</h3>
+            <p>Every HTML page follows this basic setup:</p>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Your Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Your content goes here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+            <ul>
+                <li><code>&lt;!DOCTYPE html&gt;</code>: Declares the document as HTML5.</li>
+                <li><code>&lt;html&gt;</code>: The main container for all HTML content.</li>
+                <li><code>&lt;head&gt;</code>: Contains metadata, like the page title shown in the browser tab.</li>
+                <li><code>&lt;body&gt;</code>: Holds visible content, such as text, images, or links.</li>
+            </ul>
+            <hr>
+
+            <h3>Simple Example Page</h3>
+            <p>Here’s a basic HTML page for your Tesman Learning website:</p>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Tesman Learning&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to Tesman Base&lt;/h1&gt;
+    &lt;p&gt;Learn new skills today!&lt;/p&gt;
+    &lt;a href="https://tesman.com"&gt;Join Now&lt;/a&gt;
+    &lt;img src="learning.jpg" alt="People studying"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Math Courses&lt;/li&gt;
+        &lt;li&gt;Science Lessons&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+            <hr>
+
+            <h3>Key Tips</h3>
+            <ul>
+                <li><b>Save with .html</b>: Use a text editor (like Notepad or VS Code) and save your file with a <code>.html</code> extension.</li>
+                <li><b>Test in a browser</b>: Open your file in Chrome or Edge to see how it looks.</li>
+                <li><b>Comments</b>: Use <code>&lt;!-- Comment here --&gt;</code> to add notes that don’t appear on the page.</li>
+            </ul>
+            <hr>
+
+            <h3>What’s Next?</h3>
+            <p>HTML is just the start! To enhance your Tesman Learning website:</p>
+            <ul>
+                <li>Learn about tags and attributes on our <a href="tags.html">Tags & Attributes</a> page.</li>
+                <li>Use <b>CSS</b> to style your pages and make them visually appealing.</li>
+                <li>Add <b>JavaScript</b> for interactive features like quizzes or forms.</li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('.con a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const sectionId = href;
+                    document.querySelector(sectionId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
