@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Resources - Tesman Base</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --radius: 12px;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .mobile-menu:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .content h3 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem;
+            color: white;
+            font-weight: 700;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .content ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .content ul li {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+            padding-left: 2rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .content ul li:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .content ul li:before {
+            content: '▸';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .content ul li:hover:before {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .content code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .content hr {
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .content hr::after {
+            content: '◆';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--darker);
+            color: var(--accent);
+            padding: 0 1rem;
+            font-size: 0.8rem;
+        }
+
+        .content a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .content a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .content a:hover {
+            color: var(--primary);
+        }
+
+        .content a:hover::after {
+            width: 100%;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .language-toggle a {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .language-toggle a.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .language-toggle a:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Resource Cards */
+        .resources-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .resource-card {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .resource-card.featured {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .resource-card.recommended {
+            border-left: 4px solid #2ecc71;
+        }
+
+        .resource-card.special {
+            border-left: 4px solid #9b59b6;
+        }
+
+        .resource-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .featured-badge {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .recommended-badge {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .special-badge {
+            background: #9b59b6;
+            color: white;
+        }
+
+        .resource-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .resource-card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            border-radius: var(--radius);
+            margin: 1rem 0;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-thumbnail:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+
+        .resource-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--accent);
+        }
+
+        /* Learning Path */
+        .learning-path {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+        }
+
+        .learning-path h3 {
+            margin-top: 0;
+            color: white;
+        }
+
+        .path-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .path-step {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .resources-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--darker);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .content {
+                margin: 2rem 1rem;
+                padding: 2rem;
+            }
+            
+            .content h2 {
+                font-size: 2rem;
+            }
+            
+            .content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .footer-links {
+                gap: 1rem;
+            }
+            
+            .language-toggle {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .language-toggle a {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .resources-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Tesman Base</div>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="tags&attributes.html">Tags & Attributes</a>
+                <a href="learning-resources.html" class="active">Videos</a>
+                <a href="hometamil.html">In Tamil</a>
+                <a href="https://copilot.microsoft.com/chats/96LMkoy45P16NhdhdWh44" class="nav-cta">
+                    <i class="fas fa-robot"></i>
+                    Copilot
+                </a>
+            </div>
+            
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge floating">
+                <i class="fas fa-graduation-cap"></i>
+                Complete Learning Resources
+            </div>
+            <h1 class="hero-title">Web Development Learning Resources</h1>
+            <p class="hero-subtitle">Discover the best YouTube channels and courses for learning web development in both Tamil and English. Start your journey to becoming a web developer today!</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2>Complete Web Development Learning Resources</h2>
+        
+        <div class="language-toggle">
+            <a href="#tamil-resources" class="active">Tamil Resources</a>
+            <a href="#english-resources">English Resources</a>
+        </div>
+
+        <div id="tamil-resources">
+            <h3>Best Tamil YouTube Resources</h3>
+            
+            <div class="resources-container">
+                <div class="resource-card featured">
+                    <div class="resource-badge featured-badge">Featured</div>
+                    <h4>Web Development Full Course in Tamil</h4>
+                    <p><strong>Best for:</strong> Complete beginners to web development</p>
+                    <p><strong>Topics covered:</strong> HTML, CSS, JavaScript, React basics</p>
+                    <a href="https://youtu.be/7dSJubxFWv0?si=Mr0aDqeBc8bKfFLl" target="_blank">
+                        <img src="https://img.youtube.com/vi/7dSJubxFWv0/maxresdefault.jpg" alt="Web Development Full Course" class="video-thumbnail">
+                    </a>
+                    <a href="https://youtu.be/7dSJubxFWv0?si=Mr0aDqeBc8bKfFLl" target="_blank" class="resource-link">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Now
+                    </a>
+                </div>
+
+                <div class="resource-card recommended">
+                    <div class="resource-badge recommended-badge">Recommended</div>
+                    <h4>React JS Full Course in Tamil</h4>
+                    <p><strong>Best for:</strong> Learning React.js from scratch</p>
+                    <p><strong>Topics covered:</strong> Components, Hooks, State Management</p>
+                    <a href="https://youtu.be/SkoGKN8YknY?si=ajSDOFj-Rn6V4lae" target="_blank">
+                        <img src="https://img.youtube.com/vi/SkoGKN8YknY/maxresdefault.jpg" alt="React JS Full Course" class="video-thumbnail">
+                    </a>
+                    <a href="https://youtu.be/SkoGKN8YknY?si=ajSDOFj-Rn6V4lae" target="_blank" class="resource-link">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Now
+                    </a>
+                </div>
+
+                <div class="resource-card special">
+                    <div class="resource-badge special-badge">Special</div>
+                    <h4>Node.js & Express Crash Course</h4>
+                    <p><strong>Best for:</strong> Backend development with Node.js</p>
+                    <p><strong>Topics covered:</strong> Express framework, REST APIs, MongoDB</p>
+                    <a href="https://youtu.be/tfN9gPFmUfA?si=p0vIsSwbHUVe_kVD" target="_blank">
+                        <img src="https://img.youtube.com/vi/tfN9gPFmUfA/maxresdefault.jpg" alt="Node.js Crash Course" class="video-thumbnail">
+                    </a>
+                    <a href="https://youtu.be/tfN9gPFmUfA?si=p0vIsSwbHUVe_kVD" target="_blank" class="resource-link">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Now
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>CyberDude Networks (Anbuselvan Rocky)</h4>
+                    <p><strong>Best for:</strong> Full-stack web development (HTML, CSS, JS, React, Node.js)</p>
+                    <p><strong>Recommended Video:</strong> HTML Full Course in Tamil</p>
+                    <a href="https://youtu.be/ok-plXXHlWw" target="_blank">
+                        <img src="https://img.youtube.com/vi/ok-plXXHlWw/maxresdefault.jpg" alt="HTML Full Course" class="video-thumbnail">
+                    </a>
+                    <a href="https://www.youtube.com/c/CyberDudeNetworks" target="_blank" class="resource-link">
+                        <i class="fab fa-youtube"></i>
+                        Visit Channel
+                    </a>
+                </div>
+            </div>
+
+            <div class="learning-path">
+                <h3>Tamil Learning Path Recommendation</h3>
+                <div class="path-steps">
+                    <div class="path-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Start with Web Development Fundamentals</h4>
+                            <p>Begin with <a href="https://youtu.be/7dSJubxFWv0?si=Mr0aDqeBc8bKfFLl" target="_blank">Web Development Fundamentals</a> to understand the basics of HTML, CSS, and JavaScript.</p>
+                        </div>
+                    </div>
+                    <div class="path-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Learn React JS Frontend</h4>
+                            <p>Move on to <a href="https://youtu.be/SkoGKN8YknY?si=ajSDOFj-Rn6V4lae" target="_blank">React JS Frontend</a> development to build interactive user interfaces.</p>
+                        </div>
+                    </div>
+                    <div class="path-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Master Node.js Backend</h4>
+                            <p>Advance to <a href="https://youtu.be/tfN9gPFmUfA?si=p0vIsSwbHUVe_kVD" target="_blank">Node.js Backend</a> development to create server-side applications.</p>
+                        </div>
+                    </div>
+                    <div class="path-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Explore Full-Stack Development</h4>
+                            <p>Complete your journey with <a href="https://www.youtube.com/c/CyberDudeNetworks" target="_blank">Full-Stack Development</a> resources to become a well-rounded developer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="english-resources" style="display: none;">
+            <h3>Best English YouTube Resources</h3>
+            
+            <div class="resources-container">
+                <div class="resource-card featured">
+                    <div class="resource-badge featured-badge">Must Watch</div>
+                    <h4>Web Development Full Course by FreeCodeCamp</h4>
+                    <p><strong>Best for:</strong> Complete beginners (6-hour crash course)</p>
+                    <p><strong>Topics covered:</strong> HTML, CSS, JavaScript, Responsive Design</p>
+                    <a href="https://youtu.be/nu_pCVPKzTk" target="_blank">
+                        <img src="https://img.youtube.com/vi/nu_pCVPKzTk/maxresdefault.jpg" alt="Web Development Full Course" class="video-thumbnail">
+                    </a>
+                    <a href="https://youtu.be/nu_pCVPKzTk" target="_blank" class="resource-link">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Now
+                    </a>
+                </div>
+
+                <div class="resource-card recommended">
+                    <div class="resource-badge recommended-badge">Top Pick</div>
+                    <h4>React JS Course by Codevolution</h4>
+                    <p><strong>Best for:</strong> Learning modern React (2024)</p>
+                    <p><strong>Topics covered:</strong> Hooks, Context API, Redux, Router</p>
+                    <a href="https://youtu.be/bMknfKXIFA8" target="_blank">
+                        <img src="https://img.youtube.com/vi/bMknfKXIFA8/maxresdefault.jpg" alt="React JS Course" class="video-thumbnail">
+                    </a>
+                    <a href="https://youtu.be/bMknfKXIFA8" target="_blank" class="resource-link">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Now
+                    </a>
+                </div>
+
+                <div class="resource-card special">
+                    <div class="resource-badge special-badge">Premium</div>
+                    <h4>Node.js Crash Course by Traversy Media</h4>
+                    <p><strong>Best for:</strong> Backend development fundamentals</p>
+                    <p><strong>Topics covered:</strong> Express, MongoDB, REST APIs</p>
+                    <a href="https://youtu.be/fBNz5xF-Kx4" target="_blank">
+                        <img src="https://img.youtube.com/vi/fBNz5xF-Kx4/maxresdefault.jpg" alt="Node.js Crash Course" class="video-thumbnail">
+                    </a>
+                    <a href="https://youtu.be/fBNz5xF-Kx4" target="_blank" class="resource-link">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Now
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Web Dev Simplified</h4>
+                    <p><strong>Best for:</strong> Quick, modern web development tutorials</p>
+                    <p><strong>Recommended:</strong> CSS Grid complete guide</p>
+                    <a href="https://youtu.be/9zBsdzdE4sM" target="_blank">
+                        <img src="https://img.youtube.com/vi/9zBsdzdE4sM/maxresdefault.jpg" alt="CSS Grid Tutorial" class="video-thumbnail">
+                    </a>
+                    <a href="https://www.youtube.com/c/WebDevSimplified" target="_blank" class="resource-link">
+                        <i class="fab fa-youtube"></i>
+                        Visit Channel
+                    </a>
+                </div>
+            </div>
+
+            <div class="learning-path">
+                <h3>English Learning Path Recommendation</h3>
+                <div class="path-steps">
+                    <div class="path-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Foundation: Web Dev Basics</h4>
+                            <p>Start with <a href="https://youtu.be/nu_pCVPKzTk" target="_blank">Web Dev Basics</a> from FreeCodeCamp to build a strong foundation.</p>
+                        </div>
+                    </div>
+                    <div class="path-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Frontend: React Mastery</h4>
+                            <p>Advance to <a href="https://youtu.be/bMknfKXIFA8" target="_blank">React Mastery</a> with Codevolution to master modern frontend development.</p>
+                        </div>
+                    </div>
+                    <div class="path-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Backend: Node.js Fundamentals</h4>
+                            <p>Learn <a href="https://youtu.be/fBNz5xF-Kx4" target="_blank">Node.js Fundamentals</a> with Traversy Media to build robust backend systems.</p>
+                        </div>
+                    </div>
+                    <div class="path-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Advanced: Modern Techniques</h4>
+                            <p>Explore <a href="https://www.youtube.com/c/WebDevSimplified" target="_blank">Modern Techniques</a> with Web Dev Simplified to stay current with industry trends.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Tesman Base</div>
+            </div>
+            <p>Master web development with our comprehensive learning platform</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="index1.html">Tags & Attributes</a>
+                <a href="index6.html">Videos</a>
+                <a href="index3.html">Tamil Resources</a>
+                <a href="https://copilot.microsoft.com/chats/96LMkoy45P16NhdhdWh44">Copilot</a>
+            </div>
+            <p>&copy; 2024 Tesman Base. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            
+            // Toggle icon
+            const icon = this.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Language toggle functionality
+        document.querySelector('.language-toggle').addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                // Update active tab
+                document.querySelector('.language-toggle a.active').classList.remove('active');
+                e.target.classList.add('active');
+                
+                // Show/hide sections
+                if (e.target.textContent.includes('Tamil')) {
+                    document.getElementById('tamil-resources').style.display = 'block';
+                    document.getElementById('english-resources').style.display = 'none';
+                } else {
+                    document.getElementById('tamil-resources').style.display = 'none';
+                    document.getElementById('english-resources').style.display = 'block';
+                }
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 23, 42, 0.98)';
+                header.style.padding = '0.75rem 2rem';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+                header.style.padding = '1rem 2rem';
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

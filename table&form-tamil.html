@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables and Forms - Tesman Base</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --radius: 12px;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .mobile-menu:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .content h3 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem;
+            color: white;
+            font-weight: 700;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .content ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .content ul li {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+            padding-left: 2rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .content ul li:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .content ul li:before {
+            content: '▸';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .content ul li:hover:before {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .content pre {
+            background: var(--darker);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+            line-height: 1.5;
+            position: relative;
+            border-left: 4px solid var(--accent);
+        }
+
+        .content pre::before {
+            content: 'HTML';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: var(--darker);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-bottom-left-radius: var(--radius);
+        }
+
+        .content code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .content hr {
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .content hr::after {
+            content: '◆';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--darker);
+            color: var(--accent);
+            padding: 0 1rem;
+            font-size: 0.8rem;
+        }
+
+        .content a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .content a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .content a:hover {
+            color: var(--primary);
+        }
+
+        .content a:hover::after {
+            width: 100%;
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+        }
+
+        th {
+            background: rgba(37, 99, 235, 0.2);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: rgba(30, 41, 59, 0.8);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Tamil Language Specific Styles */
+        .tamil-text {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--darker);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .content {
+                margin: 2rem 1rem;
+                padding: 2rem;
+            }
+            
+            .content h2 {
+                font-size: 2rem;
+            }
+            
+            .content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .footer-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .content h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Tesman Base</div>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html">முகப்பு</a>
+                <a href="tags-in-tamil.html">Tags & Attributes</a>
+                <a href="learning-resources.html">வீடியோக்கள்</a>
+                <a href="hometamil.html" class="active">தமிழில்</a>
+                <a href="https://copilot.microsoft.com/chats/96LMkoy45P16NhdhdWh44" class="nav-cta">
+                    <i class="fas fa-robot"></i>
+                    Copilot
+                </a>
+            </div>
+            
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge floating">
+                <i class="fas fa-table"></i>
+                HTML அட்டவணைகள் & படிவங்கள்
+            </div>
+            <h1 class="hero-title">HTML அட்டவணைகள் & படிவங்களைக் கற்றுக்கொள்ளுங்கள்</h1>
+            <p class="hero-subtitle tamil-text">HTML அட்டவணைகள் மற்றும் படிவங்களுடன் கட்டமைக்கப்பட்ட தரவு தளவமைப்புகள் மற்றும் ஊடாடும் பயனர் உள்ளீடுகளை உருவாக்க கற்றுக்கொள்ளுங்கள். நவீன வலை அபிவிருத்திக்கான அத்தியாவசிய திறன்கள்.</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2>HTML அட்டவணைகள் மற்றும் படிவங்கள்</h2>
+
+        <!-- Tables Section -->
+        <h3>1. HTML அட்டவணைகள்</h3>
+        <p class="tamil-text">அட்டவணைகள் தரவை வரிசைகள் மற்றும் நெடுவரிசைகளாக ஒழுங்கமைக்கின்றன, கால அட்டவணைகள், தயாரிப்பு பட்டியல்கள் அல்லது ஒப்பீட்டு வரைபடங்களுக்கு ஏற்றது. முக்கிய குறிச்சொற்கள்: <code>&lt;table&gt;</code> அட்டவணை கொள்கலனுக்கு, <code>&lt;tr&gt;</code> வரிசைகளுக்கு, <code>&lt;th&gt;</code> தலைப்புகளுக்கு (அணுகல்தன்மைக்காக <code>scope</code> உடன்), மற்றும் <code>&lt;td&gt;</code> தரவு கலங்களுக்கு. <code>colspan</code> மற்றும் <code>rowspan</code> பண்புக்கூறுகள் கலங்களை நெடுவரிசைகள் அல்லது வரிசைகளில் இணைக்கின்றன.</p>
+        
+        <pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;பாடநெறி&lt;/th&gt;
+            &lt;th scope="col"&gt;பயிற்றுவிப்பாளர்&lt;/th&gt;
+            &lt;th scope="col"&gt;கால அளவு&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2"&gt;HTML &amp; CSS&lt;/td&gt;
+            &lt;td&gt;4 வாரங்கள்&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;JavaScript&lt;/td&gt;
+            &lt;td&gt;Jane Doe&lt;/td&gt;
+            &lt;td&gt;6 வாரங்கள்&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+        </pre>
+        
+        <h3>வெளியீடு: அட்டவணை</h3>
+        <p class="tamil-text">கீழே உள்ள அட்டவணை ஒரு பாடநெறி கால அட்டவணையைக் காட்டுகிறது, "HTML & CSS" பாடநெறிக்கு இரண்டு நெடுவரிசைகள் (பாடநெறி மற்றும் பயிற்றுவிப்பாளர்) இணைக்கப்பட்டுள்ளன.</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">பாடநெறி</th>
+                        <th scope="col">பயிற்றுவிப்பாளர்</th>
+                        <th scope="col">கால அளவு</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">HTML & CSS</td>
+                        <td>4 வாரங்கள்</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>Jane Doe</td>
+                        <td>6 வாரங்கள்</td>
+                    </tr>
+                    <tr>
+                        <td>React</td>
+                        <td>Michael Johnson</td>
+                        <td>8 வாரங்கள்</td>
+                    </tr>
+                    <tr>
+                        <td>Node.js</td>
+                        <td>Sarah Williams</td>
+                        <td>7 வாரங்கள்</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <p class="tamil-text"><b>காட்சி விளக்கம்</b>: அட்டவணை கருப்பு பின்னணியுடன் நுண்ணிய எல்லைகளுடன் உள்ளது. தலைப்புகளில் நீல அழுத்த பின்னணி உள்ளது, மற்றும் வரிசைகளில் சிறந்த ஊடாட்டத்திற்காக hover விளைவு உள்ளது. "HTML & CSS" கலம் இரண்டு நெடுவரிசைகளை உள்ளடக்கியது, இது கால அளவு நெடுவரிசையில் உள்ள ஒற்றை "4 வாரங்கள்" கலத்துடன் சீரமைக்கிறது.</p>
+        <hr>
+
+        <!-- Forms Section -->
+        <h3>2. HTML படிவங்கள்</h3>
+        <p class="tamil-text">படிவங்கள் பதிவு அல்லது கருத்துக்கு பயனர் உள்ளீட்டை சேகரிக்கின்றன. <code>&lt;form&gt;</code> குறிச்சொல் படிவத்தை வரையறுக்கிறது, <code>action</code> (தரவு எங்கே அனுப்பப்படுகிறது) மற்றும் <code>method</code> (GET அல்லது POST) பண்புக்கூறுகளுடன். <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, மற்றும் <code>&lt;textarea&gt;</code> போன்ற உள்ளீட்டு உறுப்புகள் வெவ்வேறு தரவு வகைகளை கையாள்கின்றன, <code>required</code> மற்றும் <code>pattern</code> போன்ற பண்புக்கூறுகள் சரிபார்ப்புக்கு பயன்படுத்தப்படுகின்றன.</p>
+        
+        <pre>
+&lt;form action="/submit" method="POST"&gt;
+    &lt;label for="name"&gt;பெயர்:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" placeholder="உங்கள் பெயரை உள்ளிடவும்" required&gt;
+    &lt;label for="course"&gt;பாடநெறி:&lt;/label&gt;
+    &lt;select id="course" name="course"&gt;
+        &lt;option value=""&gt;ஒரு பாடநெறியைத் தேர்ந்தெடுக்கவும்&lt;/option&gt;
+        &lt;option value="html"&gt;HTML &amp; CSS&lt;/option&gt;
+        &lt;option value="js"&gt;JavaScript&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;label for="feedback"&gt;கருத்து:&lt;/label&gt;
+    &lt;textarea id="feedback" name="feedback" rows="4" placeholder="உங்கள் கருத்து"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;சமர்ப்பிக்கவும்&lt;/button&gt;
+&lt;/form&gt;
+        </pre>
+        
+        <h3>வெளியீடு: படிவம்</h3>
+        <p class="tamil-text">கீழே உள்ள படிவம் பயனர்கள் தங்கள் பெயரை உள்ளிடவும், பாடநெறியைத் தேர்ந்தெடுக்கவும், கருத்தை வழங்கவும் அனுமதிக்கிறது.</p>
+        
+        <div class="form-container">
+            <form action="/submit" method="POST">
+                <div class="form-group">
+                    <label for="name">பெயர்:</label>
+                    <input type="text" id="name" name="name" placeholder="உங்கள் பெயரை உள்ளிடவும்" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">மின்னஞ்சல்:</label>
+                    <input type="email" id="email" name="email" placeholder="உங்கள் மின்னஞ்சலை உள்ளிடவும்" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="course">பாடநெறி:</label>
+                    <select id="course" name="course">
+                        <option value="">ஒரு பாடநெறியைத் தேர்ந்தெடுக்கவும்</option>
+                        <option value="html">HTML & CSS</option>
+                        <option value="js">JavaScript</option>
+                        <option value="react">React</option>
+                        <option value="node">Node.js</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedback">கருத்து:</label>
+                    <textarea id="feedback" name="feedback" rows="4" placeholder="உங்கள் கருத்து"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    படிவத்தை சமர்ப்பிக்கவும்
+                </button>
+            </form>
+        </div>
+        
+        <p class="tamil-text"><b>காட்சி விளக்கம்</b>: படிவம் செங்குத்தாக அடுக்கப்பட்டுள்ளது, தடித்த வெள்ளை லேபிள்கள் மற்றும் கருப்பு உள்ளீட்டு புலங்கள் நுண்ணிய எல்லைகளுடன் உள்ளன. உரை உள்ளீடு, துளிவிடும் பட்டி மற்றும் உரைப்பகுதி ஒரே மாதிரியான வடிவமைப்பைக் கொண்டுள்ளன, நீல பளபளப்புடன் மையம் கொண்ட நிலைகள் உள்ளன. சமர்ப்பிப்பு பொத்தான் முதன்மை சரிவைப் பயன்படுத்துகிறது மற்றும் hover விளைவு உள்ளது.</p>
+        <hr>
+
+        <!-- Table + Form Section -->
+        <h3>3. அட்டவணைகள் மற்றும் படிவங்களை இணைத்தல்</h3>
+        <p class="tamil-text">அட்டவணைகள் மற்றும் படிவங்களை இணைப்பது ஊடாடும் தரவு காட்சிகளை உருவாக்குகிறது, பதிவேடுகளை நிர்வகிப்பதற்கான திருத்தக்கூடிய அட்டவணைகள் போன்றவை. ஒவ்வொரு அட்டவணை வரிசையிலும் தரவைப் புதுப்பிப்பதற்கான உள்ளீடுகளுடன் ஒரு படிவம் இருக்கலாம், இது பொதுவாக டாஷ்போர்டுகள் அல்லது நிர்வாக பேனல்களில் பயன்படுத்தப்படுகிறது.</p>
+        
+        <pre>
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;மாணவர்&lt;/th&gt;
+            &lt;th scope="col"&gt;பாடநெறி&lt;/th&gt;
+            &lt;th scope="col"&gt;தரம்&lt;/th&gt;
+            &lt;th scope="col"&gt;செயல்கள்&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;John Doe&lt;/td&gt;
+            &lt;td&gt;HTML &amp; CSS&lt;/td&gt;
+            &lt;td&gt;
+                &lt;form action="/update-grade" method="POST"&gt;
+                    &lt;input type="hidden" name="student" value="John Doe"&gt;
+                    &lt;input type="text" name="grade" value="A" pattern="[A-F]" required&gt;
+                    &lt;button type="submit"&gt;புதுப்பிக்கவும்&lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;form action="/delete-student" method="POST"&gt;
+                    &lt;input type="hidden" name="student" value="John Doe"&gt;
+                    &lt;button type="submit"&gt;நீக்கு&lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+        </pre>
+        
+        <h3>வெளியீடு: அட்டவணை + படிவம்</h3>
+        <p class="tamil-text">கீழே உள்ள அட்டவணை ஒரு மாணவர் பட்டியலைக் காட்டுகிறது, ஒவ்வொரு வரிசையிலும் தரங்களைப் புதுப்பிக்கவும் அல்லது மாணவர்களை நீக்கவும் படிவங்கள் உள்ளன.</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">மாணவர்</th>
+                        <th scope="col">பாடநெறி</th>
+                        <th scope="col">தரம்</th>
+                        <th scope="col">செயல்கள்</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>HTML & CSS</td>
+                        <td>
+                            <form action="/update-grade" method="POST" style="display: flex; gap: 0.5rem;">
+                                <input type="hidden" name="student" value="John Doe">
+                                <input type="text" name="grade" value="A" pattern="[A-F]" required style="width: 50px; padding: 0.25rem;">
+                                <button type="submit" class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">புதுப்பிக்கவும்</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/delete-student" method="POST">
+                                <input type="hidden" name="student" value="John Doe">
+                                <button type="submit" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; background: rgba(239, 68, 68, 0.2); color: #ef4444;">நீக்கு</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>JavaScript</td>
+                        <td>
+                            <form action="/update-grade" method="POST" style="display: flex; gap: 0.5rem;">
+                                <input type="hidden" name="student" value="Jane Smith">
+                                <input type="text" name="grade" value="B" pattern="[A-F]" required style="width: 50px; padding: 0.25rem;">
+                                <button type="submit" class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">புதுப்பிக்கவும்</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/delete-student" method="POST">
+                                <input type="hidden" name="student" value="Jane Smith">
+                                <button type="submit" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; background: rgba(239, 68, 68, 0.2); color: #ef4444;">நீக்கு</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <p class="tamil-text"><b>காட்சி விளக்கம்</b>: அட்டவணை கருப்பு பின்னணியுடன் நுண்ணிய எல்லைகள் மற்றும் hover விளைவுகளுடன் உள்ளது. ஒவ்வொரு வரிசையிலும் இரண்டு படிவங்கள் உள்ளன: ஒன்று தரங்களைப் புதுப்பிப்பதற்கு (A-F தரங்களுக்கு மட்டுப்படுத்தப்பட்ட உரை உள்ளீட்டுடன்) மற்றும் ஒன்று மாணவரை நீக்குவதற்கு. புதுப்பிப்பு பொத்தான்கள் முதன்மை சரிவைப் பயன்படுத்துகின்றன, அதே நேரத்தில் நீக்கு பொத்தான்கள் சிவப்பு அழுத்தத்தைக் கொண்டுள்ளன. தளவமைப்பு கச்சிதமானது, படிவங்கள் அட்டவணை கலங்களுக்குள் நேர்த்தியாக பொருந்துகின்றன.</p>
+        <hr>
+        
+        <h3>முக்கிய கருத்துக்கள்</h3>
+        <ul>
+            <li class="tamil-text">அட்டவணைகள் கட்டமைக்கப்பட்ட தரவை வாசிக்கக்கூடிய வடிவத்தில் காண்பிப்பதற்கு அவசியம்</li>
+            <li class="tamil-text">படிவங்கள் வலைத்தளங்களில் பயனர் தொடர்பு மற்றும் தரவு சேகரிப்பை இயலுமைப்படுத்துகின்றன</li>
+            <li class="tamil-text">அட்டவணைகள் மற்றும் படிவங்களை இணைப்பது சக்திவாய்ந்த தரவு மேலாண்மை இடைமுகங்களை உருவாக்குகிறது</li>
+            <li class="tamil-text">அட்டவணைகளில் <code>scope</code> மற்றும் படிவங்களில் <code>label</code> உறுப்புகள் போன்ற சரியான அணுகல்தன்மை பண்புக்கூறுகளை எப்போதும் பயன்படுத்தவும்</li>
+            <li class="tamil-text">பதிலளிக்கும் வடிவமைப்பு அட்டவணைகள் மற்றும் படிவங்கள் அனைத்து சாதன அளவுகளிலும் நன்றாக வேலை செய்கிறது என்பதை உறுதி செய்கிறது</li>
+        </ul>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Tesman Base</div>
+            </div>
+            <p class="tamil-text">எங்கள் விரிவான கற்றல் தளத்துடன் வலை அபிவிருத்தியில் தேர்ச்சி பெறுங்கள்</p>
+            <div class="footer-links">
+                <a href="index.html">முகப்பு</a>
+                <a href="index1.html">Tags & Attributes</a>
+                <a href="index6.html">வீடியோக்கள்</a>
+                <a href="inddex3.html">தமிழ் வளங்கள்</a>
+                <a href="https://copilot.microsoft.com/chats/96LMkoy45P16NhdhdWh44">Copilot</a>
+            </div>
+            <p>&copy; 2024 Tesman Base. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            
+            // Toggle icon
+            const icon = this.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navLinks = document.querySelector('.nav-links');
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const icon = document.querySelector('.mobile-menu i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 23, 42, 0.98)';
+                header.style.padding = '0.75rem 2rem';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+                header.style.padding = '1rem 2rem';
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
